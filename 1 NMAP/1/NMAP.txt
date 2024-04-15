@@ -3,6 +3,10 @@ NMAP
 Melakukan Scanning Menggunakan NMAP
 $ nmap 192.168.81.70
 
+Menjalankan HoneyPy
+$ python setup.py
+$ python setup.py 8080
+
 Akses HoneyPy
 -> 192.168.81.70:8080
 
