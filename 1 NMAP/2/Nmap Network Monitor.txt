@@ -1,0 +1,10 @@
+NMAP Network Monitor
+
+$ ip route
+$ nmap 192.168.81.0/24
+$ nmap -sP 192.168.81.0/24
+$ sudo nmap -sP 192.168.81.0/24
+
+Netdiscover Network Monitor
+$ ip route
+$ sudo netdiscover -r 192.168.81.0/24
