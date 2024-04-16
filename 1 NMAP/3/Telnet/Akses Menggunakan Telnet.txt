@@ -1,0 +1,16 @@
+Telnet(Linux) atau Putty(Windows)
+
+Telnet merupakan sebuah protokol jaringan yang dapat digunakan untuk melakukan komunikasi dua arah. kita dapat meremote server menggunakan telnet.
+
+1. Install Telnet
+   $ sudo apt install telnet
+   $ sudo apt install telnetd 
+
+2. Set Port atau merubah port telnet sesuai keinginan atau merubah port menjadi port yang belum digunakan pada server yang dimiliki. Port default telnet 23
+   $ sudo nano /etc/services
+   
+   $ sudo systemctl status inetd
+   $ sudo systemctl stop inetd
+   $ sudo systemctl start inetd
+   $ sudo systemctl enable inetd
+   

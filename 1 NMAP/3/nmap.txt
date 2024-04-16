@@ -1,0 +1,4 @@
+NMAP
+Nmap(Network Mapper) adalah sebuah aplikasi atau tool yang berfungsi untuk melakukan port scanning.
+
+$ nmap -sS -v -O 192.168.81.60

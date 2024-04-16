@@ -1,0 +1,30 @@
+1. Membuat IP Virtual IP Address Server
+
+   --> open /etc/netplan/50-cloud-init.yaml atau /etc/netplan/01-netcfg.yaml
+
+   $ cd /etc/netplan/
+   $ sudo nano 00-netcfg.yaml
+
+   1. Set IP Address
+      network:
+          ethernets:
+              enp0s3:
+                  dhcp4: false
+                  addresses: [192.168.81.60/24, 192.168.1.65]
+                  gateway4: 192.168.81.1
+                  nameservers:
+                    addresses: [8.8.8.8,8.8.4.4,192.168.81.1]
+          version: 2
+
+   2. apply the new Netplan changes execute
+      $ sudo netplan apply
+
+   3. Alternatively, if run into some issues
+      $ sudo netplan --debug apply
+
+   4. Confirm new static IP address
+      $ ip a
+   
+   
+2. Membuat Temporary Virtual IP
+   $ sudo ip addr add 192.168.81.65/24 dev enp0s3 label enp0s3:1
