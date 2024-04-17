@@ -1,4 +1,0 @@
-couldn't run /usr/bin/dumpcap in child process: permission denied
-
-$ sudo dpkg-reconfigure wireshark-common
-$ sudo chmod +x /usr/bin/dumpcap
