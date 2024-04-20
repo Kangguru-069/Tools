@@ -1,0 +1,21 @@
+Port Scanning
+
+$ sudo apt install git
+$ git clone https://github.com/../
+
+# 1 
+$ python3 PortScan.py
+IP ADDRESS: 192.168.81.60
+START PORT: 1
+END PORT: 1000
+
+# 2
+1. Run HoneyPy
+   $ python setup.py
+   $ python setup.py 8080
+
+2. Scan Port 
+   $ python3 PortScan.py
+   IP ADDRESS: 192.168.81.60
+   START PORT: 1
+   END PORT: 10000

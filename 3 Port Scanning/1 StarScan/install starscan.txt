@@ -1,0 +1,3 @@
+Install Star Scan 
+
+$ pip3 install star_scan
