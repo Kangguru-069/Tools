@@ -1,0 +1,5 @@
+Install Bettercap di Ubuntu (BELUM BERHASIL)
+
+$ sudo apt install build-essential ruby-dev libcap-dev net-tools
+$ sudo apt install ruby
+$ sudo gem install bettercap

