@@ -1,0 +1,13 @@
+Anonsurf 
+
+AnonSurf adalah sebuah aplikasi open-source seperti VPN yang berfungsi untuk menyembunyikan alamat IP pengguna dan melindungi privasi saat browsing di internet.
+
+Install Anonsurf:
+$ sudo git clone https://github.com/Und3rf10w/kali-anonsurf.git
+$ cd /Tool/kali-anonsurf/
+$ sudo ./installer.sh
+
+Cara Menjalankan Aplikasi/Tools:
+$ anonsurf myip
+$ anonsurf start
+$ anonsurf stop
