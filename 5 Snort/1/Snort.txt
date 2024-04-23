@@ -1,0 +1,6 @@
+SNORT
+
+IDS SNORT adalah open source yang berbasis jaringan sistem deteksi intrusi NIDS yang memiliki kemampuan untuk melakukan analisis lalu lintas secara real — time dan paket logging pada jaringan Internet Protocol IP. Snort melakukan analisis protokol, mencari konten, dan pencocokan konten. Program ini juga dapat digunakan untuk mendeteksi probe atau serangan.
+
+Install Snort
+$ sudo apt install snort

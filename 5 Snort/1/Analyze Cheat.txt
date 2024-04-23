@@ -1,0 +1,16 @@
+Analyze Cheat Sheet
+
+$ snort --version
+$ snort --help
+$ snort -c
+$ snort -c /etc/snort/snort.conf
+
+$ netstat -anp
+$ netstat -anp | more
+  -a shows all network connections
+  -n lists addresses as IP addresses, not host and domain names
+  -p lists the program that’s using the network
+  
+Stop the process right away, run 
+$ kill -TERM pid  
+kill -9 will.
