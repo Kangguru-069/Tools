@@ -1,0 +1,131 @@
+1. Install apache2
+   $ sudo apt update
+   $ sudo apt install apache2
+   
+   $ sudo systemctl status apache
+   $ sudo systemctl start apache
+   $ sudo systemctl stop apache
+   $ sudo systemctl reload apache
+   $ sudo systemctl enable apache
+   
+2. Install PHP 7.4 atau 8.0
+    # Masukkan Repository PHP#
+      $ sudo apt -y install software-properties-common
+      $ sudo add-apt-repository ppa:ondrej/php
+    # Update agar repo yang kita masukkan terdeteksi#
+      $ sudo apt update
+      $ sudo apt-get install php8.0 atau php7.4
+    # Install extension
+      $ sudo apt -y install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc \
+        php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev \
+        php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap \
+        php7.4-zip php7.4-intl php7.4-cli \
+        imagemagick git zip libgd-dev libapache2-mod-php
+        
+      $ sudo apt -y install php8.0-common php8.0-mysql php8.0-xml php8.0-xmlrpc \
+        php8.0-curl php8.0-gd php8.0-imagick php8.0-cli php8.0-dev \
+        php8.0-imap php8.0-mbstring php8.0-opcache php8.0-soap \
+        php8.0-zip php8.0-intl php8.0-cli \
+        imagemagick git zip libgd-dev libapache2-mod-php
+        
+3. Install MySQL atau Percona
+    # Install GnuPG, the GNU Privacy Guard
+      $ sudo apt-get install gnupg2
+    # Mendownload Percona dari repository PERCONA #
+      $ sudo apt -y install wget 
+      $ sudo wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb
+      $ sudo dpkg -i percona-release_latest.$(lsb_release -sc)_all.deb
+    # Install Percona Versi 5.7 (Khusus Latihan)
+      $ sudo percona-release setup ps57
+      $ sudo apt -y install percona-server-server-5.7
+    # Install Percona Versi 8.0 (Sedikit Lebih Aman)
+      $ sudo percona-release setup ps80
+      $ sudo apt -y install percona-server-server-8.0
+    # Enter Root Password
+      Password : 123456  ---> untuk latihan jika untuk operasional sebenarnya gunakan password yang kuat
+
+    # Edit File mysqld.cnf  --->   /etc/mysql/percona-server.conf.d/mysqld.cnf
+      $ sudo vi /etc/mysql/percona-server.conf.d/mysqld.cnf
+       
+       [mysqld]
+       max_allowed_packet=32M
+
+    # Restart MySQL
+      /etc/int.d/mysql restart atau sudo systemctl restart mysql.service
+      
+    # MASUK KE DATABASE MYSQL
+    $ mysql
+    $ mysql -u root -p
+    
+4. Install PHPMyAdmin
+   $ sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
+
+   -> Configure PHPMyAdmin Installation
+       $ sudo mysql
+       $ mysql -u root -p
+       
+       - command to disable the Validate Password component. Note that this won’t actually
+         uninstall it, but just stop the component from being loaded on your MySQL server:
+         mysql> UNINSTALL COMPONENT "file://component_validate_password";
+         mysql> exit
+       Install phpmyadmin again
+       $ sudo apt install phpmyadmin
+       - command to re-enable the Validate Password component:
+       mysql> INSTALL COMPONENT "file://component_validate_password";
+       
+       $ sudo phpenmod mbstring
+       $ sudo systemctl restart apache2
+    
+    1. Configuring Password Access for the MySQL Root Account
+       $ sudo mysql
+       
+       mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;  
+       mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';  
+       Check authentication
+       mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+       
+       
+    2. Configuring Password Access for the MySQL Root Account
+       $ sudo mysql
+       $ mysql -u root -p
+       
+       
+       Check authentication
+       mysql> CREATE USER 'slaber'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';  
+       mysql> ALTER USER 'slaber'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
+       Check authentication
+       mysql> GRANT ALL PRIVILEGES ON *.* TO 'slaber'@'localhost' WITH GRANT OPTION;
+       mysql> exit
+       
+    3. Access PHPMyAdmin
+       https://your_domain_or_IP/phpmyadmin
+       
+       configure phpmyadmin
+       $ sudo nano /etc/apache2/conf-available/phpmyadmin.conf   
+         
+         Configure
+         <Directory /usr/share/phpmyadmin>
+    		Options SymLinksIfOwnerMatch
+    		DirectoryIndex index.php
+    		AllowOverride All
+   		. . .
+       
+       $ sudo systemctl restart apache2
+       
+       $ sudo nano /usr/share/phpmyadmin/.htaccess
+         
+         configure 
+         AuthType Basic
+	 AuthName "Restricted Files"
+	 AuthUserFile /etc/phpmyadmin/.htpasswd
+	 Require valid-user
+	 
+       $ sudo htpasswd -c /etc/phpmyadmin/.htpasswd username
+       $ sudo htpasswd /etc/phpmyadmin/.htpasswd additionaluser
+       $ sudo systemctl restart apache2
+       
+       To configure phpMyAdmin Server Change Apache2 or lighttpd
+       $ sudo dpkg-reconfigure -plow phpmyadmin
+       
+       Access ---> https://domain_name_or_IP/phpmyadmin    
+
