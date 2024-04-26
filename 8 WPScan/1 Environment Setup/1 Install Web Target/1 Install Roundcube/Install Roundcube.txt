@@ -1,0 +1,216 @@
+Install ROUNDCUBE
+
+1. Install & Configure Postfix
+   $ sudo apt update -y
+   $ sudo apt install -y postfix
+   
+   -> Type of mail configuration : Internet Site
+   -> System Mail name : webmail.ac.id
+   
+   Configure
+   $ sudo mv /etc/postfix/main.cf /etc/postfix/main.cf.bk
+   $ sudo nano /etc/postfix/main.cf
+   
+   Copy information from --> main.cf.bk to main.cf
+   
+2. Create Virtual Mail Box Domains
+   $ sudo nano /etc/postfix/virtual_mailbox_domains
+   
+   Add Domain Name look on configuration main.cf:
+   webmail.ac.id
+   
+   $ sudo postmap /etc/postfix/virtual_mailbox_domains
+   $ sudo nano /etc/postfix/master.cf   
+     Uncomment :
+     submission inet n       -       y       -       -       smtpd
+
+3. Install Configure Dovecot
+   $ sudo apt install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd
+   
+   $ sudo nano /etc/dovecot/conf.d/10-mail.conf
+     Configure:
+     mail_location = mbox:~/mail:INBOX=/var/mail/%u  
+     Change to:
+     mail_location = maildir:/var/mail/vhosts/%d/%n  
+   
+   $ sudo mkdir -p /var/mail/vhosts/example.com
+   $ sudo groupadd -g 5000 vmail
+   $ sudo useradd -r -g vmail -u 5000 vmail -d /var/mail/vhosts -c "virtual mail user"
+   $ sudo chown -R vmail:vmail /var/mail/vhosts/
+   
+   Edit : 10-master.conf
+   $ sudo nano /etc/dovecot/conf.d/10-master.conf
+   
+   Uncomment :
+    ...
+    inet_listener imaps {
+      #port = 993
+      #ssl = yes
+    }
+    ...
+   
+   
+    ...
+    inet_listener pop3s {
+      #port = 995
+      #ssl = yes
+    }
+    ...
+    
+    
+    Change :
+    ...
+    service lmtp {
+    unix_listener lmtp {
+      #mode = 0666
+    }
+
+    # Create inet listener only if you can't use the above UNIX socket
+    #inet_listener lmtp {
+      # Avoid making LMTP visible for the entire internet
+      #address =
+      #port =
+    #}
+    }
+    ...
+    
+    
+    Change the configuration to :
+    ...
+    service lmtp {
+      unix_listener /var/spool/postfix/private/dovecot-lmtp {
+        mode = 0600
+        user = postfix
+        group = postfix
+      }
+    }
+    ...
+    
+    
+    Change Config :
+    ...
+    # Postfix smtp-auth
+    #unix_listener /var/spool/postfix/private/auth {
+    #  mode = 0666
+    #}
+    ...
+    
+    Change config to :
+    ...
+    #Postfix smtp-auth
+    unix_listener /var/spool/postfix/private/auth {
+      mode = 0666
+      user = postfix
+      group = postfix
+    }
+    ...
+
+    EDIT : 10-auth.conf
+    $ sudo nano /etc/dovecot/conf.d/10-auth.conf
+    Uncomment :
+     disable_plaintext_auth = yes
+    
+    Edit :
+    auth_mechanisms = plain
+    to 
+    auth_mechanisms = plain login
+
+    
+    Disable dovecot default authentication
+    #!include auth-system.conf.ext
+
+    Uncomment or Enable
+    !include auth-passwdfile.conf.ext
+
+   
+   
+     Edit : auth-passwdfile.conf.ext
+     $ sudo nano /etc/dovecot/conf.d/auth-passwdfile.conf.ext
+     
+     Change :
+     passdb {
+       driver = passwd-file
+       args = scheme=CRYPT username_format=%u /etc/dovecot/users
+     }
+
+     userdb {
+       driver = passwd-file
+       args = username_format=%u /etc/dovecot/users
+     ...
+     }
+     
+     To :
+     passdb {
+       driver = passwd-file
+       args = scheme=PLAIN username_format=%u /etc/dovecot/dovecot-users
+     }
+
+     userdb {
+       driver = static
+       args = uid=vmail gid=vmail home=/var/mail/vhosts/%d/%n    
+     }
+
+
+     CREATE dovecot-users
+     $ sudo nano /etc/dovecot/dovecot-users
+     
+     Add the users that you want to use the email service to the file by following the
+     format below. Replace EXAMPLE_PASSWORD with a strong password. Also, replace
+     example.com with your domain name.
+     
+     admin@example.com:{plain}EXAMPLE_PASSWORD
+     info@example.com:{plain}EXAMPLE_PASSWORD
+     billing@example.com:{plain}EXAMPLE_PASSWORD
+     
+     Configure Dovecot to Use the SSL Certificate. 
+     Open the /etc/dovecot/conf.d/10-ssl.conf file.
+     $ sudo nano /etc/dovecot/conf.d/10-ssl.conf
+     
+     edit 
+     ssl = yes
+     to 
+     ssl = required
+     
+     Configure :
+     #ssl_cert = </etc/dovecot/dovecot.pem
+     #ssl_key = </etc/dovecot/private/dovecot.pem
+     
+     Change the two entries above and make sure they are pointing to the SSL certificate for
+     your domain. For instance, if you are using the Let's Encrypt certificate, your entries
+     will be similar to those shown below. Replace example.com with your domain name.
+     
+     ssl_cert = </etc/letsencrypt/live/webmail.ac.id/fullchain.pem
+     ssl_key = </etc/letsencrypt/live/webmail.ac.id/privkey.pem
+     
+     
+     Restart the postfix and dovecot services to use the new settings.
+     $ sudo service postfix restart 
+     $ sudo service dovecot restart
+
+4. Install & Configure Roundcube    
+   $ sudo apt install roundcube
+
+   Configure :
+   $ sudo nano /etc/apache2/conf-available/roundcube.conf
+
+     Alias /roundcube /var/lib/roundcube
+
+   $ sudo systemctl restart apache2
+   S sudo nano /var/lib/roundcube/config/config.inc.php
+
+Isikan nama host dan smtp server email. Untuk smtp server secara default running pada port 25. Isi juga autentikasi smtp server seperti smtp_user dan smtp_pass jika smtp server kalian sebelumnya menggunakan autentikasi dan jika tidak cukup dikosongi saja ''.
+
+   $config['default_host'] = 'webmail.ac.id';
+   $config['smtp_server'] = 'webmail.ac.id';
+   $config['smtp_port'] = 25;
+   $config['smtp_user'] = 'slaber';
+   $config['smtp_pass'] = '1234567890';
+
+   OPEN Webmail
+   192.168.81.70/roundcube
+
+
+
+
+Sumber : https://docs.vultr.com/how-to-install-postfix-dovecot-and-roundcube-on-ubuntu-20-04
+

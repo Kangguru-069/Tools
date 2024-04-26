@@ -1,0 +1,37 @@
+Install WORDPRESS
+
+1. Install Apache
+   $ sudo apt update && apt upgrade
+   $ sudo apt install apache2
+   $ sudo systemctl status apache2
+2. Install MySQL
+   $ sudo apt install mariadb-server mariadb-client
+   $ mysql_secure_instalation
+3. Install PHP
+   $ sudo apt install php php-mysql
+   Configure :
+   $ vim /var/www/html/info.php
+   Write:
+   <?php
+   phpinfo();
+   ?>  
+4. Create Wordpress
+   $ mysql -u root -p
+   mysql> CREATE DATABASE wordpress_db;
+   mysql> CREATE USER 'wp_user'@'localhost' IDENTIFIED BY '1234578';
+   mysql> GRANT ALL ON wordpress_db.* TO 'wp_user'@'localhost' IDENTIFIED BY '12345678';
+   mysql> FLUSH PRIVILEGES;
+   mysql> exit
+   
+5. Install Wordpress
+   $ cd /tmp
+   $ sudo wget https://wordpress.org/latest.tar.gz
+   $ sudo tar -xvf latest.tar.gz
+   $ sudo cp -R wordpress /var/www/html/
+   $ sudo chown -R www-data:www-data /var/www/html/wordpress/
+   $ sudo chmod -R 755 /var/www/html/wordpress/
+   $ sudo mkdir /var/www/html/wordpress/wp-content/uploads
+   $ sudo chown -R www-data:www-data /var/www/html/wordpress/wp-content/uploads/
+   
+6. Open URL Server
+   https://server-ip/wordpress

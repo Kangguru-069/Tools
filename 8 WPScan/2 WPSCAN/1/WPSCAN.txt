@@ -1,0 +1,20 @@
+SCAN USE WPSCAN :
+
+Update
+$ wpscan --update
+Scan installed plugins
+$ wpscan --url http(s)://your-domain.com --enumerate p
+Scan vulnerable plugins
+$ wpscan --url http(s)://your-domain.com --enumerate vp
+Scan installed themes
+$ wpscan --url http(s)://your-domain.com --enumerate t
+Scan vulnerable themes
+$ wpscan --url http(s)://your-domain.com --enumerate vt
+Scan user accounts:
+$ wpscan --url http(s)://your-domain.com --enumerate u
+Scan vulnerable files:
+$ wpscan --url http(s)://your-domain.com --enumerate tt
+
+
+
+Sumber : https://www.linuxbabe.com/security/install-wpscan-wp-vulnerability-scanner
