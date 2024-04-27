@@ -158,9 +158,9 @@ Install ROUNDCUBE
      format below. Replace EXAMPLE_PASSWORD with a strong password. Also, replace
      example.com with your domain name.
      
-     admin@example.com:{plain}EXAMPLE_PASSWORD
-     info@example.com:{plain}EXAMPLE_PASSWORD
-     billing@example.com:{plain}EXAMPLE_PASSWORD
+     slaber@webmail.ac.id:{plain}EXAMPLE_PASSWORD
+     sasayang@webmail.ac.id:{plain}EXAMPLE_PASSWORD
+     admin@webmain.ac.id:{plain}EXAMPLE_PASSWORD
      
      Configure Dovecot to Use the SSL Certificate. 
      Open the /etc/dovecot/conf.d/10-ssl.conf file.
