@@ -1,0 +1,15 @@
+1. Download Katoolin
+   $ git clone https://github.com/LionSec/katoolin.git
+   
+2. Copy katoolin.py ke /usr/bin 
+   $ cp /katoolin/katoolin.py /usr/bin/katoolin
+   
+3. Memberikan ijin akses agar program dapat di jalankan
+   $ chmod +x /usr/bin/katoolin
+
+4. Install Python2.7
+   $ sudo nano katoolin
+   change line #!/usr/bin/python #!/usr/bin/python2.7
+    
+4. Jalankan tools
+   $ sudo katoolin
