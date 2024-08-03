@@ -1,0 +1,12 @@
+Hydra Tools
+
+Hydra adalah alat brute-forcing kata sandi sumber terbuka yang dirancang berdasarkan fleksibilitas dan kinerja tinggi dalam serangan brute-force daring.
+
+Catatan :
+Jika dalam proses brute-forcing muncul tulisan 
+[ERROR] child with pid 1234 terminating, cannot connect
+[ERROR] child with pid 5678 terminating, cannot connect
+[ERROR] child with pid 1490 terminating, cannot connect 
+Artinya dalam list password belum terdapat kombinasi password yang benar
+
+Dikarenakan hydra merupakan tools yang dirancang untuk melakukan serangan dalam jaringan dengan menggunakan kata sandi terbuka, maka jika di dalam list password tidak terdapat kombinasi password yang benar maka "[ERROR] child with pid **** terminating, cannot connect"
