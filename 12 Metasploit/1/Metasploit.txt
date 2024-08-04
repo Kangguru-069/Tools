@@ -1,0 +1,49 @@
+Metasploit 
+
+Metasploit merupakan Tools yang digunakan untuk melakukan Pengujian Penetrasi atau Pentesting seperti Mengidentifikasi keamanan, melakukan serangan dan menghindari deteksi
+Beberapa Tools yang terdapat pada Metasploit :
+
+1. MSFConsol
+   Berfungsi menguji dan memindai sistem untuk melakukan penyerangan, 
+   melakukan pengintaian jaringan, meluncurkan eksploitasi, dll.
+ 
+2. Exploit Modules
+   Berfungsi menargetkan seragan tertentu yang diketahui. Metasploit memiliki sejumlah besar
+   modul eksploitasi, termasuk buffer overflow dan eksploitasi injeksi SQL. 
+   Setiap modul memiliki penguji muatan berbahaya yang dapat dijalankan oleh penguji terhadap
+   sistem target.
+
+3. Auxiliary Modules
+   Berfungsi untuk melukukan pengujian atau tindakan tambahan yang diperlukan 
+   selama uji penetrasi yamg tidak terkait dengan eksploitasi kerentanan secara langsung. 
+   Contoh; Fuzzing, Scannning dan Denial of Service (DoS)
+
+4. Post-Exploitation Modules
+   Berfungsi memperdalam akses pada sistem Target dan sistem yang terhubung. 
+   Misalnya, Enumerator Aplikasi, Enumerator jaringan dan Hash Dump.
+
+5. Payload Modules
+   Berfungsi menyediakan kode shell yang berjalan setelah Penguji berhasil menembus sistem.
+   Payload dapat berupa skrip statis atau dapat menggunakan Meterpreter, 
+   Metode payload memungkinkan penguji menulis DLL sendiri atau 
+   membuat kemampuan eksploitasi baru.
+
+6. No Operation (NOPS) Generator
+   Berfungsi menghasilkan byte acak yang bertujuan melewati sistem deteksi dan 
+   pencegahan instruksi (IDS/IPS) 
+   
+7. Datastore
+   Berfungsi mengkonfigurasi pusat yang memungkinkan penguji menentukan 
+   bagaimana komponen metasploit bekerja. 
+   Datastore juga memungkinkan pengaturan parameter dan variabel dinamis.
+   Menggunakan kembali antara modul dan muatan. 
+   Metasploit memiliki penyimpanan data global dan penyimpanan data khusus untuk setiap modul. 
+
+
+Catatan :
+   
+RHOST (Remote Host) --> The Target IP Address Outside Network
+RPORT (Remote Port) --> The Target Port
+
+LHOST (Local Host)  --> The Target IP Address Inside Network
+LPORT (Local Port)  --> The Target Port
