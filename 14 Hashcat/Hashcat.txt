@@ -1,0 +1,16 @@
+Hashcat - Password Attacks --> Crack Md5 Dengan Hashcat
+
+Hash adalah sebuah algoritma yang mengubah sebuah data informasi berupa huruf, angka atau karakter lainnya menjadi karakter terenkripsi dengan ukuran yang tetap, data yang sudah di enkripsi melalui fungsi hash tidak dapat dikembalikan atau didekripsi. 
+
+1. Membuat Hash MD5
+   $ echo -n "Rahasia" | md5sum | tr -d " -" >> hashes
+   $ echo -n "SangatRahasia" | md5sum | tr -d " -" >> hashes
+   $ echo -n "brenebon" | md5sum | tr -d " -" >> hashes
+   $ echo -n "Abc12345" | md5sum | tr -d " -" >> hashes
+   $ echo -n "Pa5sw0rD" | md5sum | tr -d " -" >> hashes
+   
+2. Membaca File Hash
+   $ cat hashes
+   
+3. Cracking hash code
+   $ hashcat -m 0 --potfile-disable hashes /usr/share/wordlists/rockyou.txt.gz
