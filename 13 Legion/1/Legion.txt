@@ -1,0 +1,30 @@
+Legion 
+
+Legion merupakan sebuah cabang dari SECFORCE’s Sparta, adalah kerangka kerja pengujian penetrasi jaringan open source, mudah digunakan, super-extensible dan semi-otomatis yang membantu dalam penemuan, pengintaian dan eksploitasi sistem informasi.
+
+Fitur :
+- Pengintaian dan pemindaian otomatis dengan NMAP, whatweb, nikto, Vulners, Hydra, SMBenum,
+  dirbuster, sslyzer, webslayer, dan lainnya (dengan hampir 100 skrip terjadwal otomatis)
+- Antarmuka grafis yang mudah digunakan dengan menu dan panel konteks yang kaya yang
+  memungkinkan pentester dengan cepat menemukan dan mengeksploitasi vektor serangan pada host
+- Fungsionalitas modular memungkinkan pengguna untuk dengan mudah menyesuaikan Legiun dan secara
+  otomatis memanggil skrip / alat mereka sendiri
+- Pemindaian panggung yang sangat dapat disesuaikan untuk penghindaran IPS seperti ninja
+- Deteksi otomatis CPE (Penghitungan Platform Umum) dan CVE (Kerentanan dan Eksposur Umum)
+- Penyimpanan otomatis hasil proyek dan tugas secara realtime
+
+Instalasi :
+1. Install Pip
+   $ sudo apt install pip
+   
+2. Download Legion
+   $ git clone https://github.com/GoVanguard/legion.git
+   
+3. Menuju Directory
+   $ cd /Tools/legion
+
+4. Memberikan Izin Akses
+   $ chmod +x startLegion
+
+5. Menjalankan Program
+   $ sudo ./startLegion
