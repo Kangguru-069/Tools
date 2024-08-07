@@ -1,0 +1,39 @@
+DMitry (Deepmagic Information Gathering Tool)
+
+DMitry (Deepmagic Information Gathering Tool) adalah Aplikasi Baris Perintah UNIX/ (GNU) yang dikodekan dalam bahasa C.
+
+DMitry memiliki kemampuan untuk mengumpulkan informasi tentang sebuah host. Fungsionalitas dasar adalah memungkinkan mengumpulkan subdomain, alamat email, informasi uptime, pemindaian port tcp, pencarian whois, dan banyak lagi. Informasi dikumpulkan dengan metode berikut:
+
+  - Melakukan pencarian whois  
+  - Mengambil kemungkinan data uptime, sistem dan data server
+  - Melakukan pencarian SubDomain pada host target
+  - Melakukan pencarian alamat E-Mail pada host target
+  - Melakukan TCP Portscan pada target host
+  
+
+Tutorial Menggunakan DMitry
+
+1. Perintah untuk melakukan pencarian whois dari alamat suatu host, dmitry akan membantu
+   menemukan IP yang dibutuhkan.
+   $ dmitry -i hostaddress/hostname
+   Contoh :
+   $ dmitry -i 192.168.107.90
+   $ dmitry -i brenebon.com
+   
+2. Perintah yang digunakan untuk melakukan pencarian whois pada nama sebuah host
+   $ dmitry -w hostaddress/hostname
+   Contoh :
+   $ dmitry -w 192.168.107.90
+   $ dmitry -w brenebon.com
+   
+3. Perintah yang digunakan untuk melakukan pencarian subdomain
+   $ dmitry -s hostaddress/hostname
+   Contoh :
+   $ dmitry -s 192.168.107.90
+   $ dmitry -s brenebon.com
+   
+4. Perintah yang digunakan untuk melakukan scan port TCP pada sebuah host
+   $ dmitry -p hostaddress/hostname
+   Contoh :
+   $ dmitry -p 192.168.107.90
+   $ dmitry -p brenebon.com
