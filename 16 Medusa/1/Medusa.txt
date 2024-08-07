@@ -1,0 +1,19 @@
+Medusa
+
+1. Install Medusa
+   $ sudo apt install medusa
+   
+2. Cara menggunakan medusa 
+   1. Scanning Single User
+      $ medusa -h [IP Host] -u [username] -P [password list] -M [protokol]
+      Contoh :
+      $ medusa -h 192.168.107.3 -u brenebon -P password.txt -M ssh
+
+   2. Scanning Multiple User
+      $ medusa -h [IP Host] -u [username] -P [password list] -M [protokol]
+      Contoh :
+      $ medusa -h 192.168.107.3 -u /home/slaber/Tools/user.txt -P /home/slaber/Tools/password.txt -M ssh
+
+   
+  
+   
