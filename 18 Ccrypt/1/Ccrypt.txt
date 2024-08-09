@@ -1,0 +1,25 @@
+Ccrypt
+
+ccrypt adalah utilitas untuk enkripsi dan dekripsi file dan aliran yang aman. 
+Itu dirancang sebagai pengganti utilitas crypt UNIX standar, yang terkenal karena menggunakan algoritma enkripsi yang sangat lemah. 
+ccrypt didasarkan pada sandi Rijndael, sandi yang sama yang digunakan dalam standar AES.
+
+
+Tutorial ccrypt
+
+1. Install ccrypt
+   $ sudo apt install ccrypt
+   
+2. Encrypt File
+   $ ccencrypt <filename>
+   Contoh :
+   $ ccencrypt data
+
+3. Membaca file encrypt
+   $ cat data.cpt
+   
+4. Decrypt File
+   $ ccdecrypt data.cpt
+   
+5. Membaca file yang telah di decrypt
+   $cat data
