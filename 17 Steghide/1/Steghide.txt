@@ -1,0 +1,19 @@
+Steghide
+
+Steghide merupakan sebuah metode Cryptography, dimana kita dapat menyimpan sebuah pesan tersembunyi di dalam sebuah gambar. 
+Kita juga dapat menyimpan sebuah pesan di dalam sebuah file mengunakan steganography.
+
+Cara Menggunakan Steghide
+
+1. Install Steghide
+   $ sudo apt install steghide
+   
+2. Menyimpan Sebuah Pesan di dalam gambar
+   $ steghide embed -cf picture.jpg -ef secret.txt
+ 
+3. Melakukan pengecekan informasi
+   $ steghide info picture.jpg
+   
+4. Mengextract file di dalam sebuah gambar
+   $ steghide extract -sf picture.jpg
+   
