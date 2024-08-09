@@ -1,0 +1,13 @@
+GnuPG
+
+1. Register GnuPG key
+   $ gpg --gen-key
+   
+2. Mendapatkan Public Key
+   $ gpg --armor --output brenebonkey.gpg --export <E-mail yang di daftarkan>
+   
+3. Encrypt Key
+   $ gpg --output encryptkey --encrypt --recipient brenebon@website.com encryptkey.txt
+   
+4. Decrypt Key using Private Key
+   $ gpg --output encryptkey.txt --decrypt encryptkey
