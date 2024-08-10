@@ -1,0 +1,35 @@
+JTR (John The Ripper)
+
+JTR(John The Ripper) merupakan tools yang digunakan organisasi untuk menguji kekuatan kata sandi yang digunakan,
+tools ini awalnya dirilis pada tahun 1996 untuk Unix, tetapi sekarang bekerja pada beberapa sistem operasi, termasuk Linux, 
+Microsoft Windows, dan juga macOS. 
+Tools ini sering digunakan untuk melakukan serangan brute force untuk mengidentifikasi kata sandi.
+
+
+Cara Menggunakan JTR
+
+1. Install JTR (John The Ripper)
+   $ sudo apt install john
+   $ sudo apt install john-the-ripper
+   $ sudo snap install john-the-ripper
+   
+2. Membuat hash code
+   -> MD5
+      $ echo -n "p4s5w0rD" | md5sum
+      $ echo -n "p4s5w0rD" | md5sum | awk '{print $1}'
+      $ echo -n "p4s5w0rD" | md5sum | awk '{print $1}' > topsecret
+   
+   -> SHA256
+      $ echo -n 'abc12345' | sha256sum
+      $ echo -n 'user:1yh67hk9okjkuwewe0u76232w' | sha256sum > secret
+      atau
+      $ echo -n 'user:1yh67hk9okjkuwewe0u76232w' | sha256sum > secret.txt
+   
+3. Cracking The Password
+   $ john --single --format=raw-md5 topsecret
+   $ john --format=raw-md5 secret
+   
+   atau
+   
+   $ john --single --format=raw-sha256 secret
+   $ john --format=raw-sha256 secret.txt
