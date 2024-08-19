@@ -1,0 +1,24 @@
+Nikto
+
+Nikto adalah pemindai atau tools scanner open-source yang mampu mendeteksi kerentanan umum dalam web server. 
+Nikto mampu memeriksa konfigurasi server, versi perangkat lunak, dan potensi masalah keamanan lainnya.
+
+Nikto dapat menemukan berbagai macam kerentanan umum pada website, seperti:
+1. Cross-site scripting (XSS)
+2. SQL injection (SQLi)
+3. Remote code execution (RCE)
+4. Buffer overflows
+5. Cross-site request forgery (CSRF)
+6. dll.
+
+Cara Menggunakan Nikto
+1. Install Nikto
+   $ sudo apt install nikto
+
+2. Akses nikto
+   $ nikto
+   
+3. Scanning Web Server (DVWA)
+   $ nikto -h http://192.168.123.10/DVWA/index.php
+   atau
+   $ nikto -h http://192.168.123.10/DVWA/security.php
